@@ -43,7 +43,7 @@ inline void kCheckErrorState(void){ //Checks the kernel error state and returns 
 	if (kErrorState == 0) { //No error!
 		return;		
 	}
-	elseif (kErrorState < 3) { //Recoverable errors.
+	else if (kErrorState < 3) { //Recoverable errors.
 		kRetry = 1; //Set the retry variable to indicate to loop() that we need to retry
 		return;
 	}
