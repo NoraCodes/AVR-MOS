@@ -11,7 +11,7 @@ Each module has a `char <modulename>-init()` function and an `char <modulename>-
 
 ##Useage (end users)
 
-Users define the functions `char userInit(void)`, `char userLoop(void)`, and 'void userPanic(void)`. 
+Users define the functions `char userInit(void)`, `char userLoop(void)`, and `void userPanic(void)`. 
 
 `userInit` is called after the kernel and all modules initialize themselves, meaning all hardware should be available for the user to operate. It sets up anything the user needs; for example, initializing arrays or discovering communication peers could be done here.
 
