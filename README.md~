@@ -42,7 +42,7 @@ Note that modules may also have flags. These should be explained in their respec
 KF_ALL_DEBUG sets debugging. Can be 0 (default), meaning no debug information; 1, meaning projected RAM usage and other performances characteristics are output (most useful for general users); 2, meaning only critical information is output; 3, meaning the majority of information is output; or 4, meaning all information is output. Note that this generally slows and bloats the binary rather a lot, since modules (should) respect this too!
 
 ##File Structure
-+ / contains kernel.c and main.c as well as kernel-level documentation. 
++ / contains kernel.c and project.c as well as kernel-level documentation. 
 + /bootloaders contains bootloader modules.
 + /modules contains a subdirectory for each module, which contains all files for that module.
 + /headers contain kconfig.h (the kernel flags header) and modules.h (the module selection header).

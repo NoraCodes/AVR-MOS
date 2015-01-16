@@ -28,14 +28,14 @@ unsigned char kRetry      = 0; //Do we need to retry this time? TODO: Make this 
 void setup(void){
 	
 	#if MOD_PINRAW
-		kErrorState = pinraw-init(); //Initialize the PinRaw module.
+		kErrorState = pinraw_init(); //Initialize the PinRaw module.
 	#endif
 }
 
 void loop(void){
 	
 	#if MOD_PINRAW
-		kErrorState = pinraw-loop(); //Update the PinRaw module
+		kErrorState = pinraw_loop(); //Update the PinRaw module
 	#endif
 }
 
