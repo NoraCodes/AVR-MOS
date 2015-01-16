@@ -7,21 +7,26 @@ It is originally intended to run on Arduino boards, specifically the Mega 2560 -
 
 It's architected in such a way that it does not dynamically load modules, but rather it is compiled seperately for each individual project. This preserves storage space and RAM. Modules are selected by defining various compiler preprocessor `#define` directives in the main program and including the kernel header file. Its modules may use Arduino libraries, and the kernel can be compiled within the Arduino IDE.
 
-Each module has a `char <modulename>-init()` function and an `char <modulename>-loop()` function
+##Philosophy
+
+AVR MOS is intended to be built so that user applications do very little interaction with actual hardware. Rather, user code should take data from the buffer provided by one or more input modules, do logic with it, and pass data to buffers provided by one or more output modules. If you have custom hardware to interact with, write a module for it; it will make interacting with your hardware, and changing/optimizing that interaction, much easier, in the end.
+
 
 ##Useage (end users)
 
-Users define the functions `char userInit(void)`, `char userLoop(void)`, and `void userPanic(void)`. 
+Users define the callback functions `char userInit(void)`, `char userLoop(void)`, and `void userPanic(void)`. 
 
 `userInit` is called after the kernel and all modules initialize themselves, meaning all hardware should be available for the user to operate. It sets up anything the user needs; for example, initializing arrays or discovering communication peers could be done here.
 
-`userLoop` performs all actions a user wishes to do inside the action loop.
+`userLoop` performs all actions a user wishes to do inside the action loop. It is called after kernel refresh and module refreshes are done.
 
 `userPanic` contains actions performed on a kernel panic. This might include turning on a "FAULT" LED, etc. Note that drivers are not guaranteed to be available during a panic, so this should do something low-memory and simple, written without relying on drivers.
 
+Modules may also define their own callback functions.
+
 ##Useage (module authors)
 
-Modules define init and loop functions. Note that these functions MUST return a char value. They are called after the bootloader and kernel init/loop, but before the user init/loop.
+Each module has a `char <modulename>-init()` function and an `char <modulename>-loop()` function. Note that these functions MUST return a char value that is a valid return value or they will cause a kernel panic. They are called after the bootloader and kernel init/loop, but before the user init/loop. 
 
 Please respect KF_ALL_DEBUG when writing modules!
 
