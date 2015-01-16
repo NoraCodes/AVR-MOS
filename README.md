@@ -11,7 +11,6 @@ It's architected in such a way that it does not dynamically load modules, but ra
 
 AVR MOS is intended to be built so that user applications do very little interaction with actual hardware. Rather, user code should take data from the buffer provided by one or more input modules, do logic with it, and pass data to buffers provided by one or more output modules. If you have custom hardware to interact with, write a module for it; it will make interacting with your hardware, and changing/optimizing that interaction, much easier, in the end.
 
-
 ##Useage (end users)
 
 Users define the callback functions `char userInit(void)`, `char userLoop(void)`, and `void userPanic(void)`. 
@@ -42,6 +41,11 @@ Note that modules may also have flags. These should be explained in their respec
 ###Debug Mode
 KF_ALL_DEBUG sets debugging. Can be 0 (default), meaning no debug information; 1, meaning projected RAM usage and other performances characteristics are output (most useful for general users); 2, meaning only critical information is output; 3, meaning the majority of information is output; or 4, meaning all information is output. Note that this generally slows and bloats the binary rather a lot, since modules (should) respect this too!
 
+##File Structure
++ / contains kernel.c as well as kernel-level documentation. 
++ /bootloaders contains bootloader modules.
++ /modules contains a subdirectory for each module, which contains all files for that module.
++ /headers contain kconfig.h (the kernel flags header) and modules.h (the module selection header).
 
 ##Standard Return Codes
  Init and loop functions use the same return codes. One `char` long.
