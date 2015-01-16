@@ -8,3 +8,4 @@ PinRaw module. Used for accessing raw digital pins - basically, try not to use t
 It is included here as an example, and for prototyping.
 */
 #define MOD_PINRAW 0
+#define MOD_SERIAL 0

@@ -2,6 +2,8 @@
 modules/pinraw/pinraw.c
 */
 
+#include pinraw_config.h //Configuration file
+
 typedef struct {
 	unsigned char pin0mode : 1 ;
 	unsigned char pin1mode : 1 ;

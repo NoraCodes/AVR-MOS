@@ -10,6 +10,10 @@ AVR MOS Kernel main file - ONLY THIS should be included by most users.
 #if MOD_PINRAW
 	#include "modules/pinraw/pinraw.c"
 #endif
+//Module Serial
+#if MOD_SERIAL
+	#include "modules/serial/serial.c"
+#endif
 
 //prototype user callback functions.
 char userInit(void);
@@ -29,16 +33,29 @@ void setup(void){
 	
 	#if MOD_PINRAW
 		kErrorState = pinraw_init(); //Initialize the PinRaw module.
+		kCheckErrorState(); //Check for errors.
 	#endif
-		return;
+
+	#if MOD_SERIAL
+		kErrorState = serial_init(); //Initialize the Serial module.
+		kCheckErrorState(); //Check for errors.
+	#endif
+
+	return;
 }
 
 void loop(void){
 	
 	#if MOD_PINRAW
 		kErrorState = pinraw_loop(); //Update the PinRaw module
+		kCheckErrorState(); //Check for errors.
 	#endif
-		return;
+
+	#if MOD_SERIAL
+		kErrorState = serial_loop(); //Update the Serial module
+		kCheckErrorState(); //Check for errors.
+	#endif
+	return;
 }
 
 inline void kCheckErrorState(void){ //Checks the kernel error state and returns if it is 0, else calls the appropriate action.
