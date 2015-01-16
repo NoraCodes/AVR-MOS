@@ -1,4 +1,7 @@
 #Makefile for AVR-MOS
+all:
+	avr-gcc main.c -o PROJECT.out
+
 project:
 	avr-gcc main.c -o PROJECT.out
 	

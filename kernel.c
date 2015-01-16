@@ -30,6 +30,7 @@ void setup(void){
 	#if MOD_PINRAW
 		kErrorState = pinraw_init(); //Initialize the PinRaw module.
 	#endif
+		return;
 }
 
 void loop(void){
@@ -37,6 +38,7 @@ void loop(void){
 	#if MOD_PINRAW
 		kErrorState = pinraw_loop(); //Update the PinRaw module
 	#endif
+		return;
 }
 
 inline void kCheckErrorState(void){ //Checks the kernel error state and returns if it is 0, else calls the appropriate action.
