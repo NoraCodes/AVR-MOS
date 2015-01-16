@@ -1,7 +1,6 @@
 /*
 kernel.c
-AVR MOS Kernel main file - ONLY THIS should be included in the Arduino sketch by most users.
-Note: this is an Arduino sketch!
+AVR MOS Kernel main file - ONLY THIS should be included by most users.
 */
 
 #include "headers/kconfig.h" //Include kernel headers. These allow configuration of the kernel.
@@ -57,5 +56,13 @@ void kPanic(void){ //Kernel panic!
 	userPanic(); //User panic instructions
 	while(1){
 		asm("nop"); //Do nothing.	
+	}
+}
+
+//Main function. Calls setup, then calls loop.
+void main() {
+	setup();
+	while(1){
+		loop();
 	}
 }

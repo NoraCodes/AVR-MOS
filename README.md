@@ -5,7 +5,7 @@ The AVR MOS is an operating system for Atmel AVR microcontrollers designed to fu
 
 It is originally intended to run on Arduino boards, specifically the Mega 2560 - but it might eventually be set up such that it can be run on any AVR uC. In the same vein, it is designed with the ability to interoperate with bootloaders - Arduino, custom USB, SD, externel EEPROM, or even network. 
 
-It's architected in such a way that it does not dynamically load modules, but rather it is compiled seperately for each individual project. This preserves storage space and RAM. Modules are selected by defining various compiler preprocessor `#define` directives in the main program and including the kernel header file. Its modules may use Arduino libraries, and the kernel can be compiled within the Arduino IDE.
+It's architected in such a way that it does not dynamically load modules, but rather it is compiled seperately for each individual project. This preserves storage space and RAM. Modules are selected by defining various compiler preprocessor `#define` directives in the main program and including the kernel header file.
 
 ##Philosophy
 
