@@ -7,6 +7,7 @@ AVR MOS kernel configuration header. Should be included in kernel.c only.
 
 //Global flags (KF_ALL_x)
 #define KF_ALL_DEBUG = 0 //Sets debug mode. 
+#define KF_ALL_CLOCKSPEED = 16000000UL //Clockspeed in Hz (16 million, Unsigned Long)
 
 //Initialization flags (KF_INIT_x)
 #define KF_INIT_RETRYS = Governs the number of retries from recoverable errors before the kernel panics. Defualts to 3.
